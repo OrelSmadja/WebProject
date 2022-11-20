@@ -1,0 +1,72 @@
+﻿body {
+    background-color: #2B2D42;
+}
+
+ul {
+    background-color: #8D99AE;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+a {
+    color: #2B2D42;
+    font-weight: bold;
+    font-family: 'Guttman Haim';
+    font-style: oblique;
+}
+
+div .card {
+    background-color: #EDF2F4;
+    border-radius: 20px;
+    padding: 7px;
+    margin: 10px;
+    border-color: #8D99AE;
+    border-width: 3px;
+}
+
+h1 {
+    color: #EDF2F4;
+    font-weight: bold;
+    font-family: Guttman-Aram;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+p, h5 {
+    color: #2B2D42;
+    font-style: oblique;
+}
+
+img {
+    border-top-left-radius: 10px;
+}
+
+button.btn.btn-primary.dropdown-toggle, input.card-link {
+    border-radius: 10px;
+    background: #8D99AE;
+    color: #2B2D42;
+    font-weight: bold;
+    font-family: 'Guttman Haim';
+    font-style: oblique;
+    padding: 10px;
+}
+
+ul.dropdown-menu.show {
+    background-color: #EDF2F4;
+}
+
+label, input {
+    color: #EDF2F4;
+}
+
+div .comment {
+    background-color: #8D99AE;
+    border-color:white;
+    border-width:thick;
+    color: #EDF2F4;
+    margin-bottom: 7px;
+    border-radius:15px;
+    padding:5px;
+}

@@ -1,0 +1,52 @@
+﻿@model Tuple<Category, Animal>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<center>
+    <h1>Details</h1>
+    <div>
+        <div>
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/@Model.Item2.PictureName" alt="Card image cap">
+
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Item2.Name</h5>
+                    <p class="card-text">@Model.Item2.Name has @Model.Item2.Comments!.Count comments</p>
+                    <p>Category: @Model.Item1.Name</p>
+
+                    <p class="card-text">Age: @Model.Item2.Age</p>
+
+                    <div class="card-body">
+                        <p>
+                            @Model.Item2.Description
+                        </p>
+                        <div>
+                            <form asp-action="PostComment" asp-controller="Catalog" asp-route-AnimalId="@Model.Item2.AnimalId" asp-route-categoryId="@Model.Item1.CategoryId" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form-1" style="padding: 10px;">
+                                <div class="form-group">
+                                    <p>
+                                       commant:
+                                    </p>
+                                    <input name="commentText" required="required" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add comment">
+
+                                </div>
+                                <input type="submit" value="Add" class="card-link" />
+
+                            </form>
+
+                            @foreach (var comment in Model.Item2.Comments)
+                            {
+                                <div class="comment" >
+                                    @comment.CommentString
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>

@@ -1,0 +1,51 @@
+﻿@model Tuple<IEnumerable<Category>, Animal>
+@{
+    ViewData["Title"] = "AddAnimal";
+}
+
+<center>
+    <center style="width: 400px">
+        <h1>AddAnimal</h1>
+
+
+        <form enctype="multipart/form-data" asp-controller="Administrator" asp-action="AddNew">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Category select</label>
+                <select required="required" name="categoryId" class="form-control" id="exampleFormControlSelect1">
+                    <option value="" >Select</option>
+                    @foreach (var category in Model.Item1)
+                    {
+                        <option value="@category.CategoryId">@category.Name</option>
+
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="exampleFormControlInput1">Animal Name</label>
+                    <input asp-for="@Model.Item2.Name" name="name" required="required" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                    <span asp-validation-for="@Model.Item2.Name" class="text-danger"></span>
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Animal Age</label>
+                    <input asp-for="@Model.Item2.Age" name="age" required="required" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Age">
+                    <span asp-validation-for="@Model.Item2.Age" class="text-danger"></span>
+                </div>
+                <div>
+                    <label required="required" for="exampleFormControlTextarea1">Description:</label>
+                    <input asp-for="@Model.Item2.Description" required="required" name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">
+                    <span asp-validation-for="@Model.Item2.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Animal Image</label>
+                    <input asp-for="@Model.Item2.PictureName" name="file" type="file" required="required" accept="image/png, image/gif, image/jpeg , image/jfif" type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                <input type="submit" value="Add" class="card-link" />
+            </div>
+
+
+        </form>
+
+
+    </center>
+</center>

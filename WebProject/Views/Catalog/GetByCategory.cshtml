@@ -1,0 +1,43 @@
+﻿@model Contain
+
+@{
+    ViewData["Title"] = "GetByCategory";
+}
+
+
+
+
+
+
+<center>
+    <h1>Catalog</h1>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            Category
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            @foreach (var category in Model.categories!)
+            {
+                <li><a asp-action="GetByCategory" asp-route-categoryId="@category.CategoryId">@category.Name</a></li>
+            }
+        </ul>
+    </div>
+    @foreach (var animal in Model.animals!)
+    {
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/@animal.PictureName" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@animal.Name</h5>
+                <p class="card-text">@animal.Name has @animal.Comments!.Count comments</p>
+                <p class="card-text">Age: @animal.Age</p>
+                <div class="card-body">
+                    <a asp-action="Details" asp-route-categoryId="@animal.CategoryId" asp-route-id="@animal.AnimalId" asp-controller="Catalog" class="card-link">Details</a>
+                    <a asp-action="AnimalEdit" asp-route-id="@animal.AnimalId" asp-controller="Administrator" class="card-link">Edit</a>
+                </div>
+            </div>
+        </div>
+
+    }
+</center>
