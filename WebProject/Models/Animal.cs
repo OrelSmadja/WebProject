@@ -19,7 +19,7 @@ namespace WebProject.Models
         public string? Name { get; set; }
 
         [Display(Name = "Age:")]
-        [Required(ErrorMessage = "Please enter age")]
+        [Required(ErrorMessage = "Please enter age") ,Range(0,250)]
         public int Age { get; set; }
 
         [Display(Name = "Description:")]

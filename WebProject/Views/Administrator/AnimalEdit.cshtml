@@ -28,7 +28,7 @@
                 </div>
                 <div>
                     <label for="exampleFormControlInput1">Animal Age</label>
-                    <input name="age" asp-for="@Model.Item2.Age" required="required" type="number" class="form-control" id="exampleFormControlInput1">
+                    <input min="0" name="age" asp-for="@Model.Item2.Age" required="required" type="number" class="form-control" id="exampleFormControlInput1">
                     <span asp-validation-for="@Model.Item2.Age" class="text-danger"></span>
 
                 </div>
