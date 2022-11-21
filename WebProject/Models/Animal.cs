@@ -25,9 +25,12 @@ namespace WebProject.Models
         [Display(Name = "Description:")]
         [Required(ErrorMessage = "Please enter Description")]
         public string? Description { get; set; }
-        [Required(ErrorMessage = "Please enter CategoryId")]
+
+        [Required(ErrorMessage = "Please select CategoryId"), Range(1,6)]
         [Display(Name = "CategoryId:")]
         public int CategoryId { get; set; }
+
+        [Required(ErrorMessage = "Please enter a file")]
         public string? PictureName { get; set; }
         
         public Category? Category { get; set; }

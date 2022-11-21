@@ -11,16 +11,18 @@
         <form enctype="multipart/form-data" asp-controller="Administrator" asp-action="AddNew">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Category select</label>
-                <select required="required" name="categoryId" class="form-control" id="exampleFormControlSelect1">
-                    <option value="" >Select</option>
+                <select asp-for="@Model.Item2.CategoryId" name="categoryId" class="form-control" id="exampleFormControlSelect1">
+                    <option value="">Select</option>
                     @foreach (var category in Model.Item1)
                     {
                         <option value="@category.CategoryId">@category.Name</option>
 
                     }
                 </select>
+                <span asp-validation-for="@Model.Item2.CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
+
                 <div>
                     <label for="exampleFormControlInput1">Animal Name</label>
                     <input asp-for="@Model.Item2.Name" name="name" required="required" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
@@ -38,9 +40,15 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Animal Image</label>
-                    <input asp-for="@Model.Item2.PictureName" name="file" type="file" required="required" accept="image/png, image/gif, image/jpeg , image/jfif" type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input asp-for="@Model.Item2.PictureName" name="file" type="file" required="required" accept="image/png, image/jpeg , image/jfif" type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <span asp-validation-for="@Model.Item2.PictureName" class="text-danger"></span>
+
+                </div>
+                <div>
+                    @Html.ValidationSummary(false,"",new{@class ="text-danger" })
                 </div>
                 <input type="submit" value="Add" class="card-link" />
+
             </div>
 
 
