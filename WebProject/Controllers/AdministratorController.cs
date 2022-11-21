@@ -35,7 +35,7 @@ namespace WebProject.Controllers
                     }
                     var animal = new Animal { Name = name, Age = age, CategoryId = categoryId, Description = description, PictureName = "Assets/" + file.FileName };
                     _repo.EditById(animal, id);
-                    return RedirectToAction("AddAnimal", "Administrator");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
