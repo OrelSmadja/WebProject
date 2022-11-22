@@ -13,7 +13,7 @@
         <form enctype="multipart/form-data" asp-action="EditAnimal" asp-controller="Administrator" asp-route-id="@Model.Item2.AnimalId">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Category select</label>
-                <select  asp-for="@Model.Item2.CategoryId" name="categoryId" class="form-control" id="exampleFormControlSelect1">
+                <select asp-for="@Model.Item2.CategoryId" name="categoryId" class="form-control" id="exampleFormControlSelect1">
                     @foreach (var category in Model.Item1)
                     {
                         <option value="@category.CategoryId">@category.Name</option>
@@ -40,12 +40,13 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Picture update</label>
-                    <input asp-for="@Model.Item2.PictureName" name="file" type="file" required="required" class="form-control-file" accept="image/png,  image/jpeg , image/jfif" id="exampleFormControlFile1">
+                    <input name="file" type="file" class="form-control-file" accept="image/png,  image/jpeg , image/jfif" id="exampleFormControlFile1">
                     <label for="exampleFormControlFile1">*Required*</label>
-                    <span asp-validation-for="@Model.Item2.PictureName" class="text-danger"></span>
+                    @*                    <span asp-validation-for="@Model.Item2.PictureName" class="text-danger"></span>*@
+                    @*asp-for="@Model.Item2.PictureName"*@
                 </div>
                 <div>
-                @Html.ValidationSummary(false,"",new{@class ="text-danger" })
+                    @Html.ValidationSummary(false,"",new{@class ="text-danger" })
                 </div>
                 <input type="submit" value="Update" class="card-link" />
             </div>

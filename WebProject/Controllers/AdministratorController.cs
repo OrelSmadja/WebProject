@@ -23,7 +23,7 @@ namespace WebProject.Controllers
         [HttpPost]
         public async Task<IActionResult> EditAnimal(string name, int age, IFormFile file, string description, int categoryId, int id)
         {
-
+            ModelState.Remove("file");
             if (ModelState.IsValid)
             {
                 if (file != null)
