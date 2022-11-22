@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
 using System.Reflection.Emit;
 using System.Reflection.Metadata;
@@ -6,7 +8,7 @@ using WebProject.Models;
 
 namespace WebProject.Data
 {
-    public class AnimalContext : DbContext
+    public class AnimalContext : IdentityDbContext
     {
         public AnimalContext(DbContextOptions<AnimalContext> options) : base(options) { }
 
@@ -86,7 +88,11 @@ namespace WebProject.Data
                 new { CommentId = ++id, AnimalId = ++animalId, CommentString = "has been the industry's " }
                 );
 
-
+            model.Entity<IdentityUserLogin<string>>().HasKey(i => i.UserId);
+            model.Entity<IdentityUserRole<string>>().HasKey(role => new { role.RoleId, role.UserId });
+            model.Entity<IdentityUserClaim<string>>().HasKey(c => c.UserId);
+            model.Entity<IdentityUserToken<string>>().HasKey(t => t.UserId);
+            model.Entity<IdentityUser<string>>().HasKey(u => u.Id);
 
 
         }

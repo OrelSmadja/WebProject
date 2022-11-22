@@ -43,7 +43,8 @@ img {
     border-top-left-radius: 10px;
 }
 
-button.btn.btn-primary.dropdown-toggle, input.card-link {
+
+button.btn.btn-primary.dropdown-toggle, input.card-link,a.card-link {
     border-radius: 10px;
     background: #8D99AE;
     color: #2B2D42;

@@ -1,0 +1,29 @@
+﻿@model LoginModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+<center>
+    <center style="width: 400px">
+        <h1>Register</h1>
+        <form asp-action="Register">
+            <div>
+                <label for="exampleFormControlInput1">Username</label>
+                <input asp-for="Username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label for="exampleFormControlInput1">Password</label>
+                <input asp-for="Password" type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div>
+                @Html.ValidationSummary(false,"",new{@class ="text-danger" })
+            </div>
+            <input type="submit" value="Register" class="card-link" />
+
+
+        </form>
+    </center>
+</center>

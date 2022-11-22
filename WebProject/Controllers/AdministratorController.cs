@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebProject.DAL;
 using WebProject.Models;
+using WebProject.Services;
 
 namespace WebProject.Controllers
 {
+    [Authorize]
     public class AdministratorController : Controller
     {
         IRepository _repo;
@@ -26,7 +29,8 @@ namespace WebProject.Controllers
             ModelState.Remove("file");
             if (ModelState.IsValid)
             {
-                if (file != null)
+                
+                if (file != null&&ExtensionValid.IsValid(file.FileName))
                 {
                     var savePic = Path.Combine(_webHost.WebRootPath, "Assets", file.FileName);
                     using (var upload = new FileStream(savePic, FileMode.Create))
@@ -50,7 +54,7 @@ namespace WebProject.Controllers
         public async Task<IActionResult> AddNew(string name, int age, IFormFile file, string description, int categoryId)
         {
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid&&ExtensionValid.IsValid(file.FileName))
             {
                 var savePic = Path.Combine(_webHost.WebRootPath, "Assets", file.FileName);
                 using (var upload = new FileStream(savePic, FileMode.Create))
@@ -61,13 +65,8 @@ namespace WebProject.Controllers
                 _repo.AddAnimal(animal);
                 return RedirectToAction("AddAnimal", "Administrator");
             }
-
-
-            return RedirectToAction("AddAnimal", "Administrator");
+            return Content("Something wrong");
 
         }
-
-       
-
     }
 }

@@ -20,6 +20,18 @@
         <li class="nav-item">
             <a class="nav-link" asp-action="AddAnimal" asp-controller="Administrator">Administrator</a>
         </li>
+        @if ((User.Identity!.IsAuthenticated))
+        {
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout" asp-controller="Account">Logout</a>
+            </li>
+        }
+        else
+        {
+             <li class="nav-item">
+                <a class="nav-link" asp-action="Login" asp-controller="Account">Login</a>
+            </li>
+        }
     </ul>
     <div>
 

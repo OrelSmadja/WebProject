@@ -1,4 +1,4 @@
-﻿@model Tuple<Category, Animal>
+﻿@model Tuple<Category, Animal,Comment>
 
 @{
     ViewData["Title"] = "Details";
@@ -28,18 +28,18 @@
                             <form asp-action="PostComment" asp-controller="Catalog" asp-route-AnimalId="@Model.Item2.AnimalId" asp-route-categoryId="@Model.Item1.CategoryId" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form-1" style="padding: 10px;">
                                 <div class="form-group">
                                     <p>
-                                       commant:
+                                        commant:
                                     </p>
-                                    <input name="commentText" required="required" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add comment">
+                                    <input asp-for="@Model.Item3.CommentString" name="commentText" required="required" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add comment">
+                                    @Html.ValidationSummary(false,"",new{@class ="text-danger" })
 
                                 </div>
                                 <input type="submit" value="Add" class="card-link" />
-
                             </form>
 
                             @foreach (var comment in Model.Item2.Comments)
                             {
-                                <div class="comment" >
+                                <div class="comment">
                                     @comment.CommentString
                                 </div>
                             }

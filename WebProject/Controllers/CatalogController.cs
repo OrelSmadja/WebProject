@@ -27,7 +27,7 @@ namespace WebProject.Controllers
             var animal = _repo.GetAnimalsById(id);
             var category = _repo.GetCategory(categoryId);
             if (animal != null && category != null)
-                return View(new Tuple<Category, Animal>(category, animal));
+                return View(new Tuple<Category, Animal, Comment>(category, animal, new Comment()));
             return RedirectToAction("Index");
         }
 
