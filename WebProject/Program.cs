@@ -14,6 +14,7 @@ builder.Services.AddDbContext<AnimalContext>(options =>
     options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration
         .GetConnectionString("DefaultConnection"));
 });
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
     options.Password.RequireNonAlphanumeric = false;

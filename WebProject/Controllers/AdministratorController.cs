@@ -6,7 +6,7 @@ using WebProject.Services;
 
 namespace WebProject.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize]
     public class AdministratorController : Controller
     {
         IRepository _repo;
