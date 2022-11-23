@@ -6,7 +6,7 @@ using WebProject.Services;
 
 namespace WebProject.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class AdministratorController : Controller
     {
         IRepository _repo;
@@ -24,6 +24,8 @@ namespace WebProject.Controllers
         public IActionResult AnimalEdit(int id) => View(new Tuple<IEnumerable<Category>, Animal>(_repo.GetCategories(), _repo.GetAnimalsById(id)));
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> EditAnimal(string name, int age, IFormFile file, string description, int categoryId, int id)
         {
             ModelState.Remove("file");
@@ -51,6 +53,7 @@ namespace WebProject.Controllers
             return RedirectToAction("Index", "Home");
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddNew(string name, int age, IFormFile file, string description, int categoryId)
         {
 
